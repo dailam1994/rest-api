@@ -1,0 +1,18 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Models - Todo
+model todo {
+  id      String   @id @unique @default(uuid())
+  content String   @db.VarChar(500)
+  isDone  Boolean?
+}
