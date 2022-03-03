@@ -1,13 +1,25 @@
 import { prisma } from '../../server'
-import { responseItems, bodyItem } from './todo.types'
+import { Items } from './todo.types'
+
+
+const TodoCreateUpdate = {
+    type: 'object',
+    required: ['isDone'],
+    properties: {
+        isDone: { type: 'boolean', nullable: true }
+    }
+}
 
 // Validators
 // POST a Todo
 export const putTodoOpts = {
     schema: {
-        body: bodyItem,
+        body: TodoCreateUpdate,
         response: {
-            200: responseItems
+            200: {
+                type: 'array',
+                items: Items
+            }
         },
         params: {
             type: 'object',

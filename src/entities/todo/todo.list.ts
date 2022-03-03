@@ -1,12 +1,15 @@
 import { prisma } from '../../server'
-import { responseItems } from './todo.types'
+import { Items } from './todo.types'
 
 // Validators
 // GET All Todos
 export const getAllTodoOpts = {
     schema: {
         response: {
-            200: responseItems
+            200: {
+                type: 'array',
+                items: Items
+            }
         }
     },
     handler: async (_req: any, reply: any) => {
