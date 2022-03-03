@@ -1,7 +1,9 @@
 // ESM
 import Fastify from 'fastify'
 import { PrismaClient } from '@prisma/client'
-import todoRouter from './entities/todo/todo.routes'
+import { getAllTodoOpts } from './entities/todo/todo.list'
+import { postTodoOpts } from './entities/todo/todo.create'
+import { putTodoOpts } from './entities/todo/todo.update'
 
 export const fastify = Fastify({
     logger: true
@@ -16,3 +18,11 @@ fastify.get('/', (_request, reply) => {
     reply.send({ hello: 'world' })
 })
 
+// Routes for Todo
+async function todoRouter(fastify: any, opts: any, done: any) {
+    fastify.get('/todos', getAllTodoOpts)
+    fastify.post('/todos', postTodoOpts)
+    fastify.put('/todos/:id', putTodoOpts)
+
+    done()
+}
