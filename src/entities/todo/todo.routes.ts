@@ -7,9 +7,7 @@ async function todoRouter(server: FastifyInstance, opts: any, done: any) {
 
     // GET All Todos
     server.get('/todos', getAllTodoOpts)
-
     server.post('/todos', postTodoOpts)
-
     server.put('/todos/:id', putTodoOpts)
 
     done()
