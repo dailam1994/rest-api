@@ -1,7 +1,7 @@
 // ESM
 import Fastify from 'fastify'
 import { PrismaClient } from '@prisma/client'
-import todoRouter from './entities/todo'
+import todoRouter from './entities/todo/todo.routes'
 
 const fastify = Fastify({
     logger: true
